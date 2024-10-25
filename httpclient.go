@@ -252,7 +252,7 @@ func prepareTransport(options map[int]interface{}) (http.RoundTripper, error) {
 		return nil, err
 	}
 
-	transport.Dial = func(network, addr string) (net.Conn, error) {
+	transport.DialContext = func(ctx context.Context, network, addr string) (net.Conn, error) {
 		var conn net.Conn
 		var err error
 		if connectTimeout > 0 {
